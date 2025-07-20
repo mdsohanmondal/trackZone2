@@ -19,9 +19,20 @@ const ButtonWrapper = styled.button`
   }
 `;
 
-const Button = ({ children, dark, type = 'button', onClick = null }) => {
+const Button = ({
+  children,
+  type = 'button',
+  onClick = null,
+  className = '',
+  dark,
+}) => {
   return (
-    <ButtonWrapper onClick={onClick} type={type} dark={dark}>
+    <ButtonWrapper
+      dark={dark}
+      onClick={onClick}
+      type={type}
+      className={className}
+    >
       {children}
     </ButtonWrapper>
   );

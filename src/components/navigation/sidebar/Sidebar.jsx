@@ -9,10 +9,10 @@ const Sidebar = () => {
         <h2 className="text-xl font-normal">Timezone</h2>
         <div className="filter-buttons flex flex-col gap-2">
           <DarkFilterBtn typeTimezone="All Timezone" timezoneLength={4} />
+          <FilterBtn typeTimezone="UTC-5" timezoneLength={1} />
+          <FilterBtn typeTimezone="UTC-5" timezoneLength={3} />
           <FilterBtn typeTimezone="UTC-5" timezoneLength={2} eventLength={4} />
-          <FilterBtn typeTimezone="UTC-5" timezoneLength={1} />
-          <FilterBtn typeTimezone="UTC-5" timezoneLength={3} eventLength={9} />
-          <FilterBtn typeTimezone="UTC-5" timezoneLength={1} />
+          <FilterBtn typeTimezone="UTC-5" timezoneLength={1} eventLength={3} />
         </div>
       </div>
     </div>

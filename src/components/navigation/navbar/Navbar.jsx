@@ -1,7 +1,18 @@
+import { useContext, useEffect, useState } from 'react';
 import { IoMdTime } from 'react-icons/io';
+import ClockContext from '../../../context/ClockContext';
 import Button from '../../ui/buttons/Button';
 
-const Navbar = () => {
+const Navbar = ({ setIsPopupOpen, setIsPopupOpenEvent }) => {
+  const [localTime, setLocalTime] = useState(null);
+  const { clockItems } = useContext(ClockContext);
+  useEffect(() => {
+    setInterval(() => {
+      const date = new Date();
+      setLocalTime(date.toLocaleTimeString());
+    }, 1000);
+  }, []);
+
   return (
     <div className="w-full m-1 flex items-center justify-between">
       <div className="left-side flex items-center justify-center gap-5">
@@ -13,13 +24,19 @@ const Navbar = () => {
         </div>
         <div className="flex items-center justify-center">
           <span className="px-2 py-1 rounded">Local Time:</span>
-          <span className="bg-zinc-100 px-1 py-1 rounded">06:69:00 AM</span>
+          <span className="bg-zinc-100 px-1 py-1 rounded">{localTime}</span>
         </div>
       </div>
       <div className="right-side">
         <div className="buttons">
-          <Button dark>+ Add Clock</Button>
-          <Button>+ Add Event</Button>
+          <Button dark onClick={() => setIsPopupOpen((prev) => !prev)}>
+            + Add Clock
+          </Button>
+          {clockItems.length !== 0 && (
+            <Button onClick={() => setIsPopupOpenEvent((prev) => !prev)}>
+              + Add Event
+            </Button>
+          )}
         </div>
       </div>
     </div>
